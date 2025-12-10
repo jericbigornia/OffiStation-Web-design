@@ -1,0 +1,249 @@
+/* Animated welcome for left banner */
+
+/* Restore default left banner font styles */
+.left h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.brand {
+    color: #ffe066;
+    font-family: inherit;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.13);
+}
+.left p {
+    font-size: 16px;
+    opacity: 0.9;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+/* Moving office supplies animation */
+.office-anim {
+    position: relative;
+    width: 120px;
+    height: 90px;
+    margin: 0 auto;
+}
+.floating {
+    position: absolute;
+    opacity: 0.92;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+    animation-timing-function: ease-in-out;
+}
+.paperclip {
+    left: 10px;
+    top: 40px;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border-radius: 50%;
+    animation: floatPaperclip 3.2s infinite alternate;
+}
+.pencil {
+    left: 60px;
+    top: 10px;
+    width: 36px;
+    height: 10px;
+    background: none;
+    border-radius: 5px;
+    animation: floatPencil 2.7s infinite alternate;
+}
+.notebook {
+    left: 80px;
+    top: 50px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border-radius: 6px;
+    animation: floatNotebook 3.7s infinite alternate;
+}
+@keyframes floatPaperclip {
+    0% { transform: translateY(0) rotate(-8deg) scale(1); }
+    100% { transform: translateY(-18px) rotate(12deg) scale(1.08); }
+}
+@keyframes floatPencil {
+    0% { transform: translateY(0) rotate(2deg) scale(1); }
+    100% { transform: translateY(-14px) rotate(-8deg) scale(1.04); }
+}
+@keyframes floatNotebook {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    100% { transform: translateY(-22px) rotate(6deg) scale(1.07); }
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* use site background so login page feels consistent */
+    background-color: var(--light-color);
+    min-height: 100vh;
+}
+
+/*
+    login.css (plain English):
+    Styles specifically for the login page card. The left column is a welcoming banner
+    with a purple background and small moving icons. The right column contains the
+    sign-in form. This file keeps those styles separate from the main site styles.
+*/
+
+.container {
+    width: 900px;
+    max-width: calc(100% - 40px);
+    height: 500px;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin: 36px auto; /* sit below the header */
+}
+
+    .left {
+        width: 50%;
+        background: linear-gradient(135deg, #6b2cc2, #8f48e3);
+        color: white;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        /* Match nav bar purple exactly */
+        background: linear-gradient(135deg, #6b2cc2 90%, #8f48e3 100%);
+        position: relative;
+    }
+
+    .left h1 {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .left p {
+        font-size: 16px;
+        opacity: 0.9;
+    }
+
+    /* Decorative tips removed */
+
+    /* Promo box in the left column */
+    .promo {
+        margin-top: 22px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+        padding: 18px 16px;
+        border-radius: 12px;
+        max-width: 320px;
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.06);
+        margin-left: auto; /* center promo block */
+        margin-right: auto;
+    }
+    .promo h3 {
+        margin: 0 0 8px 0;
+        font-size: 18px;
+        font-weight: 800;
+        color: #fff;
+    }
+    .promo p {
+        margin: 0 0 12px 0;
+        font-size: 14px;
+        color: rgba(255,255,255,0.95);
+    }
+    .promo-btn {
+        display: inline-block;
+        padding: 10px 14px;
+        background: #ffc107;
+        color: #000;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+    /* Ensure login form aligns nicely next to centered left panel on narrow screens */
+    @media (max-width: 900px) {
+        .container { flex-direction: column; height: auto; }
+        .left, .right { width: 100%; padding: 30px; }
+        .left { order: 1; }
+        .right { order: 2; }
+        /* no extra top padding needed because header is sticky and stays in flow */
+    }
+
+.right {
+    width: 50%;
+    background: #fff;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+    .right h2 {
+        margin-bottom: 30px;
+        font-size: 32px;
+        font-weight: bold;
+        color: #080808;
+    }
+
+    input {
+        width: 98%;
+        padding: 12px;
+        border-radius: 30px;
+        border: 1px solid #ccc;
+        margin: 10px 0;
+        padding-left: 20px;
+        font-size: 15px;
+    }
+
+    /* Password field with toggle button */
+    .password-field {
+        position: relative;
+        width: 98%;
+    }
+    .password-field input {
+        width: 100%;
+        padding-right: 56px;
+    }
+    .toggle-pass {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+.toggle-pass i {
+    color: var(--primary-color);
+}
+
+    .options {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        margin-bottom: 15px;
+        
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #6b2cc2 90%, #8f48e3 100%);
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 30px;
+        cursor: pointer;
+        margin-bottom: 15px;
+    }
+
+    .right a {
+        text-decoration: none;
+        color: #6b2cc2;
+        font-weight: bold;
+    }

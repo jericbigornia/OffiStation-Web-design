@@ -1,0 +1,170 @@
+<!--
+    cart.html (plain English):
+    The shopping cart page shows items you added from the catalog.
+    - If the cart is empty: a friendly message invites you to shop.
+    - If the cart has items: a table-like list shows product, price, quantity, and subtotal;
+        a summary box shows totals and a checkout button.
+
+    The heavy lifting (reading/writing the cart and rendering the list) is done by `script.js`.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffiStation - Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://uploads.onecompiler.io/43x8vcmdw/43x8v8ryb/LOGO.png" alt="Store Logo" class="logo-img">
+            </a>
+            <span class="store-tagline">Your Trusted Online Source for Office Supplies and Stationery</span>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li>
+                    <a href="cart.html" class="shopping-cart-link">
+                        <i class="fas fa-shopping-cart"></i> 
+                        <span id="cart-count" data-count="0">0</span> 
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart-section">
+            <div class="container">
+                <h1 class="page-title">🛒 Your Shopping Cart</h1>
+                
+                <div class="cart-content-wrapper" id="cart-content-wrapper">
+                    
+                    <div class="cart-items-container">
+                        
+                        <div class="cart-header-row" id="cart-header-row" style="display: none;">
+                            <span class="col-product">Product</span>
+                            <span class="col-price">Price</span>
+                            <span class="col-quantity">Quantity</span>
+                            <span class="col-subtotal">Subtotal</span>
+                        </div>
+                        
+                        <div id="cart-list">
+                            </div>
+                        
+                        <div class="cart-actions">
+                            <a href="catalog.html" class="continue-shopping-btn">
+                                <i class="fas fa-arrow-left"></i> Continue Shopping
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="cart-summary" id="cart-summary-box" style="display: none;">
+                        <h2 class="summary-heading">Cart Summary</h2>
+                        
+                        <div class="summary-line">
+                            <span>Subtotal (<span id="summary-item-count">0</span> items)</span>
+                            <span class="summary-value" id="cart-subtotal-value">₱ 0.00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Shipping</span>
+                            <span class="summary-value">₱ 150.00</span>
+                        </div>
+                        <div class="summary-line total-line">
+                            <span>Total</span>
+                            <span class="summary-value total-value" id="cart-total-value">₱ 0.00</span>
+                        </div>
+                        
+                        <a href="checkout.html" class="checkout-btn" id="checkout-link">Proceed to Checkout</a>
+                    </div>
+
+                    <div id="empty-cart-message" style="text-align: center; width: 100%; padding: 50px; display: none;">
+                        <p style="font-size: 1.5em; color: #666; margin-bottom: 20px;">Your cart is currently empty. 🙁</p>
+                        <a href="catalog.html" class="shop-now-btn">Start Shopping</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            
+            <div class="footer-column">
+                <h4 class="footer-heading">Shop OffiStation</h4>
+                <ul>
+                    <li><a href="catalog.html#office-supplies">Office Supplies</a></li>
+                    <li><a href="catalog.html#stationaries">Stationaries</a></li>
+                    <li><a href="promos.html">Promotions</a></li>
+                    <li><a href="new.html">New & Featured</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">Customer Support</h4>
+                <ul>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="shipping.html">Shipping & Delivery</a></li>
+                    <li><a href="payment.html">Payment Methods</a></li>
+                    <li><a href="store-locator.html">Store Locator</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">More Info</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h4 class="footer-heading">Get In Touch</h4>
+                <p>Email: <a href="mailto:info@offistation.com">info@offistation.com</a></p>
+                <p>Hotline: (02) 8XXX-XXXX</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright">
+                &copy; OffiStation. All rights reserved.
+            </p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+    // Nav toggle helper (also added to other pages)
+    document.addEventListener('DOMContentLoaded', () => {
+        const header = document.querySelector('.main-header');
+        const nav = document.querySelector('.main-nav');
+        if (!header || !nav) return;
+        if (!header.querySelector('.nav-toggle')) {
+            const btn = document.createElement('button');
+            btn.className = 'nav-toggle';
+            btn.setAttribute('aria-label', 'Toggle navigation');
+            btn.innerHTML = '<span class="bar"></span>';
+            const logoArea = header.querySelector('.logo-area') || header.firstElementChild;
+            logoArea && logoArea.insertAdjacentElement('afterend', btn);
+            btn.addEventListener('click', () => header.classList.toggle('nav-open'));
+            nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+            let resizeTimer;
+            window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (window.innerWidth > 820 && header.classList.contains('nav-open')) header.classList.remove('nav-open'); }, 120); });
+            document.addEventListener('click', (e) => { if (!header.contains(e.target) && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+        }
+    });
+    </script>
+</body>
+</html>

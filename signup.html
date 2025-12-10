@@ -1,0 +1,62 @@
+<!--
+    signup.html (plain English):
+    A simple sign-up page where new users can create an account. This demo shows
+    the form layout—there's no server-side account creation here.
+    Use `signup.css` for the sign-up card styling.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="signup.css">
+<title>Sign Up</title>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="left">
+        <h1>Join Us!</h1>
+        <p>Create an account to get started.</p>
+    </div>
+
+    <div class="right">
+        <h2>Sign Up</h2>
+
+        <input type="text" placeholder="Full Name" />
+        <input type="email" placeholder="Email Address" />
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <input type="password" placeholder="Confirm Password" />
+
+        <button class="btn">Create Account</button>
+
+        <p>Already have an account? <a href="login.html">Sign In</a></p>
+    </div>
+</div>
+
+<script>
+// Nav toggle helper for signup page
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.main-header');
+    const nav = document.querySelector('.main-nav');
+    if (!header || !nav) return;
+    if (!header.querySelector('.nav-toggle')) {
+        const btn = document.createElement('button');
+        btn.className = 'nav-toggle';
+        btn.setAttribute('aria-label', 'Toggle navigation');
+        btn.innerHTML = '<span class="bar"></span>';
+        const logoArea = header.querySelector('.logo-area') || header.firstElementChild;
+        logoArea && logoArea.insertAdjacentElement('afterend', btn);
+        btn.addEventListener('click', () => header.classList.toggle('nav-open'));
+        nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+        let resizeTimer;
+        window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (window.innerWidth > 820 && header.classList.contains('nav-open')) header.classList.remove('nav-open'); }, 120); });
+        document.addEventListener('click', (e) => { if (!header.contains(e.target) && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+    }
+});
+</script>
+
+</body>
+</html>
