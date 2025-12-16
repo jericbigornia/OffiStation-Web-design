@@ -1,0 +1,141 @@
+<!-- OffiStation — Home page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffiStation - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+</head>
+
+<body>
+    <div id="privacy-modal" class="privacy-modal" aria-hidden="true">
+        <div class="privacy-modal-content" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+            <h3 id="privacy-title">Privacy Notice</h3>
+            <p>We use local browser storage to simulate account and cart behavior for this educational demo. By clicking "I Agree" you consent to this demo behavior (no real data is transmitted).</p>
+            <p style="margin-top:8px;">Read our full <a href="privacy.html">Privacy Policy</a> for details.</p>
+            <div class="privacy-modal-actions">
+                <button class="btn privacy-decline" id="privacy-decline">Read Policy</button>
+                <button class="btn privacy-agree" id="privacy-agree">I Agree</button>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <header class="main-header">
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://uploads.onecompiler.io/43x8vcmdw/43x8v8ryb/LOGO.png" alt="Store Logo" class="logo-img">
+            </a>
+            <span class="store-tagline">Your Trusted Online Source for Office Supplies and Stationery</span>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li>
+                    <a href="cart.html" class="shopping-cart-link">
+                        <i class="fas fa-shopping-cart"></i> 
+                        <span id="cart-count" data-count="0">0</span> 
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container" style="text-align:center;color:#fff;">
+                <h1 style="font-size:2.4em;margin-bottom:8px;">Welcome to OffiStation</h1>
+                <p style="max-width:800px;margin:0 auto 18px;opacity:0.95;">Shop quality office supplies and stationery — curated for students and offices.</p>
+                <a href="catalog.html" class="shop-now-btn">Shop Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="catalog.html#office-supplies">Office Supplies</a></li>
+                    <li><a href="catalog.html#stationaries">Stationeries</a></li>
+                    <li><a href="promos.html">Promotions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h4>Contact</h4>
+                <p>Email: <a href="mailto:info@offistation.com">info@offistation.com</a></p>
+                <p>Hotline: (02) 8XXX-XXXX</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; OffiStation. All rights reserved. &nbsp;|&nbsp; A Pateros Technological College BSOA 4OL project</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+    // Hamburger toggle for mobile navigation
+    document.addEventListener('DOMContentLoaded', () => {
+        const header = document.querySelector('.main-header');
+        const nav = document.querySelector('.main-nav');
+        if (!header || !nav) return;
+        if (!header.querySelector('.nav-toggle')) {
+            const btn = document.createElement('button');
+            btn.className = 'nav-toggle';
+            btn.setAttribute('aria-label', 'Toggle navigation');
+            btn.innerHTML = '<span class="bar"></span>';
+            const logoArea = header.querySelector('.logo-area') || header.firstElementChild;
+            logoArea && logoArea.insertAdjacentElement('afterend', btn);
+            btn.addEventListener('click', () => header.classList.toggle('nav-open'));
+            nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+            let resizeTimer;
+            window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (window.innerWidth > 820 && header.classList.contains('nav-open')) header.classList.remove('nav-open'); }, 120); });
+            document.addEventListener('click', (e) => { if (!header.contains(e.target) && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+        }
+    });
+    </script>
+    <script>
+    // Privacy modal: show until user agrees
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('privacy-modal');
+        const agree = document.getElementById('privacy-agree');
+        const decline = document.getElementById('privacy-decline');
+        const key = 'os_privacy_agreed';
+        try {
+            const agreed = localStorage.getItem(key) === 'true';
+            if (!agreed && modal) { modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); }
+        } catch (e) {}
+
+        agree && agree.addEventListener('click', () => {
+            try { localStorage.setItem(key, 'true'); } catch (e) {}
+            if (modal) { modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); }
+        });
+
+        decline && decline.addEventListener('click', () => { window.location.href = 'privacy.html'; });
+    });
+    </script>
+</body>
+</html>

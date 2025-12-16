@@ -1,0 +1,386 @@
+<!--
+
+    login.html (plain English):
+
+    The login page where users can sign in. Structure:
+
+    - Left banner: a welcoming graphic and short site description (visual only).
+
+    - Right column: username/password fields and a sign-in button.
+
+
+
+    This page uses `login.css` for the two-column card layout and `script.js` for small cart-count logic
+
+    as well as the sign-in button behavior (note: sign-in is a front-end demo and redirects to home).
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="login.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <title>Login UI Replica</title>
+
+
+
+</head>
+
+<body>
+
+
+
+    <header class="main-header">
+
+        <div class="logo-area">
+
+            <a href="index.html">
+
+                <img src="https://uploads.onecompiler.io/43x8vcmdw/43x8v8ryb/LOGO.png" alt="Store Logo" class="logo-img">
+
+            </a>
+
+            <span class="store-tagline">Your Trusted Online Source for Office Supplies and Stationery</span>
+
+        </div>
+
+
+
+        <nav class="main-nav">
+
+            <ul>
+
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="login.html">Login</a></li>
+
+                <li>
+
+                    <a href="cart.html" class="shopping-cart-link">
+
+                        <i class="fas fa-shopping-cart"></i>
+
+                        <span id="cart-count" data-count="0">0</span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+
+<div class="container">
+
+    <div class="left">
+
+        <h1>Welcome to <span class="brand">OffiStation</span></h1>
+
+        <p>Discover your perfect workspace essentials.<br>
+
+        Find everything you need to spark creativity and productivity &mdash; from high-quality stationery and office supplies to organizational tools, and so much more!</p>
+
+                <div class="office-anim">
+
+                        <span class="floating paperclip">
+
+                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                                    <path d="M8 14.5L17.5 5C19.433 3.067 22.567 3.067 24.5 5C26.433 6.933 26.433 10.067 24.5 12L13 23.5C10.2386 26.2614 5.76142 26.2614 3 23.5C0.238578 20.7386 0.238578 16.2614 3 13.5L15.5 1" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+
+                                </svg>
+
+                        </span>
+
+                        <span class="floating pencil">
+
+                                <svg width="36" height="10" viewBox="0 0 36 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                                    <rect x="2" y="3" width="28" height="4" rx="2" fill="#ffe066" stroke="#fff" stroke-width="1.2"/>
+
+                                    <rect x="30" y="2" width="4" height="6" rx="1.5" fill="#8f48e3" stroke="#fff" stroke-width="1.2"/>
+
+                                    <polygon points="1,5 2,3 2,7" fill="#e0c3fc"/>
+
+                                </svg>
+
+                        </span>
+
+                        <span class="floating notebook">
+
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                                    <rect x="4" y="6" width="22" height="20" rx="4" fill="#fff" stroke="#ffe066" stroke-width="2"/>
+
+                                    <rect x="8" y="10" width="14" height="2" rx="1" fill="#ffe066"/>
+
+                                    <rect x="8" y="15" width="10" height="2" rx="1" fill="#ffe066"/>
+
+                                    <rect x="8" y="20" width="8" height="2" rx="1" fill="#ffe066"/>
+
+                                </svg>
+
+                        </span>
+
+                </div>
+
+    </div>
+
+
+
+    <div class="right">
+
+        <h2>Sign In</h2>
+
+        <input id="username" type="text" placeholder="Username or email" />
+
+        <div class="password-field">
+
+            <input id="password" type="password" placeholder="Password" />
+
+            <button type="button" class="toggle-pass" aria-label="Show password"><i class="fas fa-eye" aria-hidden="true"></i></button>
+
+        </div>
+
+        <div class="options">
+
+            <label><input id="remember" type="checkbox"/> Remember me</label>
+
+            <a href="#">Forgot password?</a>
+
+        </div>
+
+        <button id="signin-btn" class="btn">Sign In</button>
+
+
+
+        <p>New here? <a href="signup.html">Create an Account</a></p>
+
+    </div>
+
+</div>
+            <script src="script.js"></script>
+
+
+
+<script>
+
+// Minimal cart count logic for login page
+
+function getCartItems() {
+
+    return JSON.parse(localStorage.getItem('cartItems')) || [];
+
+}
+
+function updateCartCount() {
+
+    const cartItems = getCartItems();
+
+    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+    const cartCountElement = document.getElementById('cart-count');
+
+    if (!cartCountElement) return;
+
+    cartCountElement.textContent = totalItems > 99 ? '99+' : totalItems;
+
+    cartCountElement.setAttribute('data-count', totalItems);
+
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    updateCartCount();
+
+    const usernameInput = document.getElementById('username');
+
+    const passwordInput = document.getElementById('password');
+
+    const rememberCheck = document.getElementById('remember');
+
+    const signinBtn = document.getElementById('signin-btn');
+
+    const toggle = document.querySelector('.toggle-pass');
+
+
+
+    // Prefill saved username if 'remember me' was used
+
+    try {
+
+        const saved = localStorage.getItem('os_saved_username');
+
+        if (saved) { usernameInput.value = saved; rememberCheck.checked = true; }
+
+    } catch (e) { /* ignore storage errors */ }
+
+
+
+    // Toggle password visibility using Font Awesome icons
+
+    if (toggle) {
+
+        const icon = toggle.querySelector('i');
+
+        toggle.addEventListener('click', () => {
+
+            if (passwordInput.type === 'password') {
+
+                passwordInput.type = 'text';
+
+                if (icon) { icon.classList.remove('fa-eye'); icon.classList.add('fa-eye-slash'); }
+
+                toggle.setAttribute('aria-label', 'Hide password');
+
+            } else {
+
+                passwordInput.type = 'password';
+
+                if (icon) { icon.classList.remove('fa-eye-slash'); icon.classList.add('fa-eye'); }
+
+                toggle.setAttribute('aria-label', 'Show password');
+
+            }
+
+            passwordInput.focus();
+
+        });
+
+    }
+
+
+
+    // Simple sign-in handler: validate and optionally save username, then redirect
+
+    signinBtn && signinBtn.addEventListener('click', (e) => {
+
+        const user = usernameInput.value.trim();
+
+        const pass = passwordInput.value;
+
+        if (!user || !pass) { alert('Please enter your username and password.'); return; }
+
+        try {
+
+            if (rememberCheck.checked) localStorage.setItem('os_saved_username', user);
+
+            else localStorage.removeItem('os_saved_username');
+
+            // mark the user as signed in in localStorage (simple demo auth)
+
+            localStorage.setItem('os_current_user', user);
+
+        } catch (err) {}
+
+
+
+        // Redirect back to the page that requested login, if provided
+
+        const params = new URLSearchParams(window.location.search);
+
+        let returnTo = params.get('return');
+
+        try {
+
+            const saved = localStorage.getItem('os_post_login_redirect');
+
+            if (!returnTo && saved) returnTo = saved;
+
+            localStorage.removeItem('os_post_login_redirect');
+
+        } catch (e) {}
+
+
+
+        // default to home
+
+        if (!returnTo) returnTo = 'index.html';
+
+        // basic safety: only allow same-site redirects
+
+        try {
+
+            const url = new URL(returnTo, window.location.origin);
+
+            if (url.origin === window.location.origin) window.location.href = url.pathname + url.search + url.hash;
+
+            else window.location.href = 'index.html';
+
+        } catch (err) {
+
+            window.location.href = returnTo;
+
+        }
+
+    });
+
+});
+
+</script>
+
+
+
+<script>
+
+// Nav toggle helper for login page
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const header = document.querySelector('.main-header');
+
+    const nav = document.querySelector('.main-nav');
+
+    if (!header || !nav) return;
+
+    if (!header.querySelector('.nav-toggle')) {
+
+        const btn = document.createElement('button');
+
+        btn.className = 'nav-toggle';
+
+        btn.setAttribute('aria-label', 'Toggle navigation');
+
+        btn.innerHTML = '<span class="bar"></span>';
+
+        const logoArea = header.querySelector('.logo-area') || header.firstElementChild;
+
+        logoArea && logoArea.insertAdjacentElement('afterend', btn);
+
+        btn.addEventListener('click', () => header.classList.toggle('nav-open'));
+
+        nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+
+        let resizeTimer;
+
+        window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (window.innerWidth > 820 && header.classList.contains('nav-open')) header.classList.remove('nav-open'); }, 120); });
+
+        document.addEventListener('click', (e) => { if (!header.contains(e.target) && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+
+    }
+
+});
+
+</script>
+
+
+
+</body>
+
+</html>

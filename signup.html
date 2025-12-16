@@ -1,0 +1,451 @@
+
+<!--
+
+    signup.html (plain English):
+
+    A simple sign-up page where new users can create an account. This demo shows
+
+    the form layout—there's no server-side account creation here.
+
+    Use `signup.css` for the sign-up card styling.
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="signup.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<title>Sign Up</title>
+
+</head>
+
+
+
+<body>
+
+
+
+<header class="main-header">
+
+    <div class="logo-area">
+
+        <a href="index.html">
+
+            <img src="https://uploads.onecompiler.io/43x8vcmdw/43x8v8ryb/LOGO.png" alt="Store Logo" class="logo-img">
+
+        </a>
+
+        <span class="store-tagline">Your Trusted Online Source for Office Supplies and Stationery</span>
+
+    </div>
+
+
+
+    <nav class="main-nav">
+
+        <ul>
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="login.html">Login</a></li>
+
+            <li>
+
+                <a href="cart.html" class="shopping-cart-link">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                    <span id="cart-count" data-count="0">0</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<div class="container">
+
+    <div class="left">
+
+        <h1>Join Us!</h1>
+
+        <p>Create an account to get started.</p>
+
+    </div>
+
+
+
+    <div class="right">
+
+        <h2>Sign Up</h2>
+
+
+
+        <input id="fullname" type="text" placeholder="Full Name" />
+
+        <input id="email" type="email" placeholder="Email Address" />
+
+        <input id="username" type="text" placeholder="Username" />
+
+        <input id="password" type="password" placeholder="Password" />
+
+        <input id="confirm-password" type="password" placeholder="Confirm Password" />
+
+
+
+        <button id="create-btn" class="btn">Create Account</button>
+
+
+
+        <div class="divider">
+
+            <span>OR</span>
+
+        </div>
+
+
+
+        <button id="google-signup-btn" class="btn google-btn" type="button">
+
+            <i class="fab fa-google"></i> Sign Up with Google
+
+        </button>
+
+
+
+        <p>Already have an account? <a href="login.html">Sign In</a></p>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+<script>
+// Ensure shared `updateCartCount()` runs to refresh the cart badge
+try { updateCartCount(); } catch (e) { /* ignore if function not available */ }
+
+// Show success prompt after account creation
+
+function showSignupSuccess(username, email) {
+
+    let successPrompt = document.getElementById('signup-success-modal');
+
+    if (!successPrompt) {
+
+        const html = `
+
+            <div id="signup-success-modal" class="success-prompt-overlay">
+
+                <div class="success-prompt-banner">
+
+                    <div class="success-icon">
+
+                        <i class="fas fa-check-circle"></i>
+
+                    </div>
+
+                    <h2>Account Created Successfully!</h2>
+
+                    <p>Welcome to OffiStation, <strong>${username}</strong>!</p>
+
+                    <p>Email: <strong>${email}</strong></p>
+
+                    <p>Your account is ready. Start shopping for office supplies and stationery now.</p>
+
+                    <button id="start-shopping-btn" class="btn success-btn">
+
+                        <i class="fas fa-shopping-cart"></i> Start Shopping
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', html);
+
+        successPrompt = document.getElementById('signup-success-modal');
+
+       
+
+        // Start shopping redirects to catalog
+
+        document.getElementById('start-shopping-btn').addEventListener('click', () => {
+
+            successPrompt.style.display = 'none';
+
+            window.location.href = 'catalog.html';
+
+        });
+
+    }
+
+    successPrompt.style.display = 'flex';
+
+}
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    updateCartCount();
+
+    const fullnameInput = document.getElementById('fullname');
+
+    const emailInput = document.getElementById('email');
+
+    const usernameInput = document.getElementById('username');
+
+    const passwordInput = document.getElementById('password');
+
+    const confirmPasswordInput = document.getElementById('confirm-password');
+
+    const createBtn = document.getElementById('create-btn');
+
+    const googleSignupBtn = document.getElementById('google-signup-btn');
+
+
+
+    // Handle traditional account creation
+
+    if (createBtn) {
+
+        createBtn.addEventListener('click', (e) => {
+
+            e.preventDefault();
+
+            const fullname = fullnameInput.value.trim();
+
+            const email = emailInput.value.trim();
+
+            const username = usernameInput.value.trim();
+
+            const password = passwordInput.value;
+
+            const confirmPass = confirmPasswordInput.value;
+
+
+
+            // Validation
+
+            if (!fullname || !email || !username || !password || !confirmPass) {
+
+                alert('Please fill in all fields.');
+
+                return;
+
+            }
+
+            if (password !== confirmPass) {
+
+                alert('Passwords do not match.');
+
+                return;
+
+            }
+
+            if (password.length < 6) {
+
+                alert('Password must be at least 6 characters long.');
+
+                return;
+
+            }
+
+
+
+            // Store user account (simple demo—no server)
+
+            try {
+
+                localStorage.setItem('os_current_user', username);
+
+                localStorage.setItem('os_user_email', email);
+
+                localStorage.setItem('os_user_fullname', fullname);
+
+            } catch (err) {}
+
+
+
+            // Show success prompt
+
+            showSignupSuccess(fullname, email);
+
+            // Apply any pending add-to-cart that was saved before redirecting to signup
+            try {
+                const pendingRaw = localStorage.getItem('os_pending_add');
+                if (pendingRaw) {
+                    const pending = JSON.parse(pendingRaw);
+                    if (pending && pending.id) {
+                        if (typeof addItemToCart === 'function') addItemToCart(pending);
+                        localStorage.removeItem('os_pending_add');
+                        const returnTo = localStorage.getItem('os_post_login_redirect') || 'cart.html';
+                        try { localStorage.removeItem('os_post_login_redirect'); } catch (e) {}
+                        setTimeout(() => { window.location.href = returnTo; }, 700);
+                        return;
+                    }
+                }
+            } catch (e) { /* ignore */ }
+
+            // No pending add — redirect to saved return target if present
+            try {
+                const rt = localStorage.getItem('os_post_login_redirect');
+                if (rt) {
+                    localStorage.removeItem('os_post_login_redirect');
+                    setTimeout(() => { window.location.href = rt; }, 700);
+                }
+            } catch (e) {}
+
+        });
+
+    }
+
+
+
+    // Handle Google sign-up (demo)
+
+    if (googleSignupBtn) {
+
+        console.log('Google signup button found, attaching click handler');
+
+        googleSignupBtn.addEventListener('click', (e) => {
+
+            console.log('Google signup button clicked');
+
+            e.preventDefault();
+
+            // In a real app, this would redirect to Google OAuth
+
+            // For demo, we'll simulate a Google account creation
+
+            const googleUser = 'Google User ' + Math.floor(Math.random() * 10000);
+
+            const googleEmail = 'user' + Math.random().toString(36).substring(7) + '@gmail.com';
+
+            console.log('Creating demo account:', googleUser, googleEmail);
+
+           
+
+            // Store the simulated Google account
+
+            try {
+
+                localStorage.setItem('os_current_user', googleUser);
+
+                localStorage.setItem('os_user_email', googleEmail);
+
+                localStorage.setItem('os_user_fullname', googleUser);
+
+                localStorage.setItem('os_auth_method', 'google');
+
+                console.log('Account data stored in localStorage');
+
+            } catch (err) {
+
+                console.error('Error storing account:', err);
+
+            }
+
+
+
+            // Show success prompt
+
+            console.log('Showing success prompt');
+
+            showSignupSuccess(googleUser, googleEmail);
+
+            // Apply any pending add-to-cart that was saved before redirecting to signup
+            try {
+                const pendingRaw = localStorage.getItem('os_pending_add');
+                if (pendingRaw) {
+                    const pending = JSON.parse(pendingRaw);
+                    if (pending && pending.id) {
+                        if (typeof addItemToCart === 'function') addItemToCart(pending);
+                        localStorage.removeItem('os_pending_add');
+                        const returnTo = localStorage.getItem('os_post_login_redirect') || 'cart.html';
+                        try { localStorage.removeItem('os_post_login_redirect'); } catch (e) {}
+                        setTimeout(() => { window.location.href = returnTo; }, 700);
+                        return;
+                    }
+                }
+            } catch (e) { /* ignore */ }
+
+            // No pending add — redirect to saved return target if present
+            try {
+                const rt = localStorage.getItem('os_post_login_redirect');
+                if (rt) {
+                    localStorage.removeItem('os_post_login_redirect');
+                    setTimeout(() => { window.location.href = rt; }, 700);
+                }
+            } catch (e) {}
+
+        });
+
+    } else {
+
+        console.warn('Google signup button not found with ID: google-signup-btn');
+
+    }
+
+
+
+    // Nav toggle helper for signup page
+
+    const header = document.querySelector('.main-header');
+
+    const nav = document.querySelector('.main-nav');
+
+    if (header && nav && !header.querySelector('.nav-toggle')) {
+
+        const btn = document.createElement('button');
+
+        btn.className = 'nav-toggle';
+
+        btn.setAttribute('aria-label', 'Toggle navigation');
+
+        btn.innerHTML = '<span class="bar"></span>';
+
+        const logoArea = header.querySelector('.logo-area') || header.firstElementChild;
+
+        logoArea && logoArea.insertAdjacentElement('afterend', btn);
+
+        btn.addEventListener('click', () => header.classList.toggle('nav-open'));
+
+        nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+
+        let resizeTimer;
+
+        window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (window.innerWidth > 820 && header.classList.contains('nav-open')) header.classList.remove('nav-open'); }, 120); });
+
+        document.addEventListener('click', (e) => { if (!header.contains(e.target) && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+
+    }
+
+});
+
+</script>
+
+
+
+</body>
+
+</html>
+

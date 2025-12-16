@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffiStation - Promotions & Deals</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Promo Hero Section */
+        .promo-hero {
+            background: linear-gradient(135deg, #ff9966, #ff5e62); /* Orange/Red for urgency */
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+        }
+        .promo-hero h1 { font-size: 3em; margin-bottom: 10px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .promo-hero p { font-size: 1.2em; opacity: 0.9; }
+
+        /* Coupon Section */
+        .coupon-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        .coupon-card {
+            background: white;
+            border: 2px dashed var(--primary-color);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .coupon-card:hover { transform: translateY(-5px); }
+        .coupon-code {
+            background: #f0f0f0;
+            padding: 8px 15px;
+            font-family: monospace;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 10px 0;
+            display: block;
+            border-radius: 4px;
+        }
+        .copy-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .copy-btn:hover { background-color: var(--accent-color); }
+
+        /* Sale Badge on Products */
+        .product-card { position: relative; } /* Ensure relative positioning for badge */
+        .sale-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4757;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8em;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Price Styling */
+        .price-wrapper { display: flex; justify-content: center; gap: 10px; align-items: center; margin-bottom: 15px; }
+        .old-price { text-decoration: line-through; color: #999; font-size: 0.9em; }
+        .new-price { color: #ff4757; font-weight: bold; font-size: 1.2em; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://uploads.onecompiler.io/43x8vcmdw/43x8v8ryb/LOGO.png" alt="Store Logo" class="logo-img">
+            </a>
+            <span class="store-tagline">Your Trusted Online Source for Office Supplies and Stationery</span>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li>
+                    <a href="cart.html" class="shopping-cart-link">
+                        <i class="fas fa-shopping-cart"></i> 
+                        <span id="cart-count" data-count="0">0</span> 
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="promo-hero">
+            <h1>🔥 Flash Sale!</h1>
+            <p>Discounts available on selected products — check today's deals.</p>
+            <p style="margin-top:12px; opacity:0.95; font-size:0.95em;">Free shipping on orders ₱1,500+ • Limited stock • New deals added weekly — grab them before they're gone!</p>
+        </section>
+
+        <!-- Voucher Section -->
+        <section class="products-section">
+            <div class="coupon-container">
+                <div class="coupon-card">
+                    <h3>🎟️ Exclusive Voucher</h3>
+                    <p style="color: #666; margin: 8px 0;">₱100 OFF</p>
+                    <span class="coupon-code">OFFI2025</span>
+                    <p style="font-size: 0.85em; color: #888; margin: 8px 0;">Min. spend: ₱500</p>
+                    <button class="copy-btn" onclick="copyCoupon('OFFI2025')">Copy Code</button>
+                </div>
+
+                <div class="coupon-card">
+                    <h3>🎟️ Bulk Discount</h3>
+                    <p style="color: #666; margin: 8px 0;">10% OFF</p>
+                    <span class="coupon-code">BULK10</span>
+                    <p style="font-size: 0.85em; color: #888; margin: 8px 0;">Min. spend: ₱2,000</p>
+                    <button class="copy-btn" onclick="copyCoupon('BULK10')">Copy Code</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-section product-catalog">
+            <div class="product-grid">
+
+                    <div class="product-card" data-id="promo03" data-name="Ink Cartridge Black" data-price="600.00" data-image="picturebox/ink.png">
+                        <div class="sale-badge">-20%</div>
+                        <div class="product-photo"><img src="picturebox/ink.png" alt="Ink Cartridge Black"></div>
+                        <div class="product-info">
+                            <p class="product-name">Ink Cartridge Black</p>
+                            <div class="price-wrapper">
+                                <span class="old-price">₱ 750.00</span>
+                                <span class="new-price">₱ 600.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-id="promo04" data-name="2026 Planner (Clearance)" data-price="100.00" data-image="picturebox/planner.png">
+                        <div class="sale-badge">CLEARANCE</div>
+                        <div class="product-photo"><img src="picturebox/planner.png" alt="2024 Planner"></div>
+                        <div class="product-info">
+                            <p class="product-name">2026 Planner (Last 5pcs)</p>
+                            <div class="price-wrapper">
+                                <span class="old-price">₱ 400.00</span>
+                                <span class="new-price">₱ 100.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-id="promo05" data-name="Ballpoint Pen Set (12pcs)" data-price="50.00" data-image="picturebox/ball point pen set.jpg">
+                        <div class="sale-badge">BUY 1 TAKE 1</div>
+                        <div class="product-photo"><img src="picturebox/ball point pen set.jpg" alt="Ballpoint Pen Set"></div>
+                        <div class="product-info">
+                            <p class="product-name">Ballpoint Pen Set (12pcs)</p>
+                            <div class="price-wrapper">
+                                <span class="old-price">₱ 75.00</span>
+                                <span class="new-price">₱ 50.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-id="promo06" data-name="Highlighter Set (6 colors)" data-price="75.00" data-image="picturebox/highlighter set.png">
+                        <div class="sale-badge">-25%</div>
+                        <div class="product-photo"><img src="picturebox/highlighter set.png" alt="Highlighter Set"></div>
+                        <div class="product-info">
+                            <p class="product-name">Highlighter Set (6 colors)</p>
+                            <div class="price-wrapper">
+                                <span class="old-price">₱ 99.00</span>
+                                <span class="new-price">₱ 75.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-id="promo07" data-name="Tape Dispenser Desk" data-price="99.00" data-image="picturebox/tape dispenser desk.png">
+                        <div class="sale-badge">SALE</div>
+                        <div class="product-photo"><img src="picturebox/tape dispenser desk.png" alt="Tape Dispenser"></div>
+                        <div class="product-info">
+                            <p class="product-name">Tape Dispenser Desk</p>
+                            <div class="price-wrapper">
+                                <span class="old-price">₱ 150.00</span>
+                                <span class="new-price">₱ 99.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-id="promo08" data-name="Bond Paper A4 (5 Reams Box)" data-price="500.00" data-image="picturebox/bondpaper A4.png">
+                        <div class="sale-badge">BULK SAVE</div>
+                        <div class="product-photo"><img src="picturebox/bondpaper A4.png" alt="Bond Paper Box"></div>
+                        <div class="product-info">
+                            <p class="product-name">Bond Paper A4 (5 Reams Box)</p>
+                            <div class="price-wrapper">
+                                <span class="old-price">₱ 1,250.00</span>
+                                <span class="new-price">₱ 500.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-id="promo09" data-name="Mesh Pencil Holder" data-price="120.00" data-image="picturebox/mesh pensil holder.png">
+                        <div class="sale-badge">SALE</div>
+                        <div class="product-photo"><img src="picturebox/mesh pensil holder.png" alt="Mesh Pencil Holder"></div>
+                        <div class="product-info">
+                            <p class="product-name">Mesh Pencil Holder</p>
+                            <div class="price-wrapper">
+                                <span class="old-price">₱ 150.00</span>
+                                <span class="new-price">₱ 120.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-id="promo10" data-name="Whiteboard Markers (4pcs)" data-price="175.00" data-image="picturebox/white board markers.png">
+                        <div class="sale-badge">HOT</div>
+                        <div class="product-photo"><img src="picturebox/white board markers.png" alt="Whiteboard Markers"></div>
+                        <div class="product-info">
+                            <p class="product-name">Whiteboard Markers (4pcs)</p>
+                            <div class="price-wrapper">
+                                <span class="old-price">₱ 220.00</span>
+                                <span class="new-price">₱ 175.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-id="promo11" data-name="Stapler" data-price="130.00" data-image="picturebox/stapler.jpg">
+                        <div class="sale-badge">SALE</div>
+                        <div class="product-photo"><img src="picturebox/stapler.jpg" alt="Stapler"></div>
+                        <div class="product-info">
+                            <p class="product-name">Stapler</p>
+                            <div class="price-wrapper">
+                                <span class="old-price">₱ 180.00</span>
+                                <span class="new-price">₱ 130.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-id="promo12" data-name="Laminating Film (100s)" data-price="450.00" data-image="picturebox/laminating film.png">
+                        <div class="sale-badge">CLEARANCE</div>
+                        <div class="product-photo"><img src="picturebox/laminating film.png" alt="Laminating Film"></div>
+                        <div class="product-info">
+                            <p class="product-name">Laminating Film (100s)</p>
+                            <div class="price-wrapper">
+                                <span class="old-price">₱ 600.00</span>
+                                <span class="new-price">₱ 450.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to cart</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="catalog.html#office-supplies">Office Supplies</a></li>
+                    <li><a href="catalog.html#stationaries">Stationeries</a></li>
+                    <li><a href="promos.html">Promotions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h4>Contact</h4>
+                <p>Email: <a href="mailto:info@offistation.com">info@offistation.com</a></p>
+                <p>Hotline: (02) 8XXX-XXXX</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; OffiStation. All rights reserved. &nbsp;|&nbsp; A Pateros Technological College BSOA 4OL project</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+
+    <script>
+        function copyCoupon(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                alert("Coupon " + code + " copied to clipboard!");
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+        
+        // Add nav toggle functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.main-header');
+            const nav = document.querySelector('.main-nav');
+            if (!header || !nav) return;
+            if (!header.querySelector('.nav-toggle')) {
+                const btn = document.createElement('button');
+                btn.className = 'nav-toggle';
+                btn.setAttribute('aria-label', 'Toggle navigation');
+                btn.innerHTML = '<span class="bar"></span>';
+                const logoArea = header.querySelector('.logo-area') || header.firstElementChild;
+                logoArea && logoArea.insertAdjacentElement('afterend', btn);
+                btn.addEventListener('click', () => header.classList.toggle('nav-open'));
+                nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+            }
+        });
+    </script>
+</body>
+</html>

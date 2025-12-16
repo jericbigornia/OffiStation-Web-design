@@ -1,0 +1,195 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffiStation - Product Catalog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body> 
+
+    <header class="main-header">
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://uploads.onecompiler.io/43x8vcmdw/43x8v8ryb/LOGO.png" alt="Store Logo" class="logo-img">
+            </a>
+            <span class="store-tagline">Your Trusted Online Source for Office Supplies and Stationery</span>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <a href="cart.html" class="shopping-cart-link">
+                        <i class="fas fa-shopping-cart"></i> 
+                        <span id="cart-count" data-count="0">0</span> 
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="product-section" class="product-catalog">
+            <div class="container">
+                
+                <!-- Per-section sort controls placed above each product group -->
+                
+                <h2 class="section-title" id="office-supplies">PURCHASE OFFICE SUPPLIES</h2>
+                <div style="text-align: left; padding: 12px 0;">
+                    <label for="sort-select-office" style="margin-right:8px; font-weight:600;">Sort by:</label>
+                    <select id="sort-select-office" class="sort-select" style="padding:8px 10px; border-radius:4px; border:1px solid #ccc;">
+                        <option value="default">Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                    </select>
+                </div>
+                <div class="product-grid">
+                    
+                    <div class="product-card" data-id="os01" data-name="Bond Paper A4 (500s)" data-price="250.00" data-image="https://via.placeholder.com/150/0000FF/FFFFFF?text=Paper"><div class="product-photo"><img src="picturebox/bondpaper A4.png" alt="Bond Paper A4"></div><div class="product-info"><p class="product-name">Bond Paper A4 (500s)</p><p class="product-price">₱ 250.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os02" data-name="Bond Paper Letter (500s)" data-price="240.00" data-image="https://via.placeholder.com/150/0000FF/FFFFFF?text=Paper"><div class="product-photo"><img src="picturebox/Bond Paper Letter (500s).png" alt="Bond Paper Letter"></div><div class="product-info"><p class="product-name">Bond Paper Letter (500s)</p><p class="product-price">₱ 240.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os03" data-name="Stapler" data-price="120.00" data-image="https://via.placeholder.com/150/FF5733/FFFFFF?text=Stapler"><div class="product-photo"><img src="picturebox/stapler.jpg" alt="Stapler"></div><div class="product-info"><p class="product-name">Stapler</p><p class="product-price">₱ 120.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os04" data-name="Box of Staples" data-price="45.00" data-image="https://via.placeholder.com/150/FF5733/FFFFFF?text=Staples"><div class="product-photo"><img src="picturebox/staple.png" alt="Box of Staples"></div><div class="product-info"><p class="product-name">Box of Staples</p><p class="product-price">₱ 45.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os05" data-name="Ink Cartridge Black" data-price="750.00" data-image="https://via.placeholder.com/150/2C3E50/FFFFFF?text=Ink"><div class="product-photo"><img src="picturebox/ink.png" alt="Ink Cartridge Black"></div><div class="product-info"><p class="product-name">Ink Cartridge Black</p><p class="product-price">₱ 750.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os06" data-name="Laser Toner Cartridge" data-price="1800.00" data-image="https://via.placeholder.com/150/2C3E50/FFFFFF?text=Toner"><div class="product-photo"><img src="picturebox/laser toner cartridge.png" alt="Toner Black"></div><div class="product-info"><p class="product-name">Laser Toner Cartridge</p><p class="product-price">₱ 1,800.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os07" data-name="Photo Paper Glossy (50s)" data-price="320.00" data-image="https://via.placeholder.com/150/0000FF/FFFFFF?text=Photo+Paper"><div class="product-photo"><img src="picturebox/photopaper glossy.png" alt="Photo Paper Glossy"></div><div class="product-info"><p class="product-name">Photo Paper Glossy (50s)</p><p class="product-price">₱ 320.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os08" data-name="Binder Clips Assorted" data-price="65.00" data-image="https://via.placeholder.com/150/808080/FFFFFF?text=Clips"><div class="product-photo"><img src="picturebox/binder clips asorted.png" alt="Binder Clips"></div><div class="product-info"><p class="product-name">Binder Clips Assorted</p><p class="product-price">₱ 65.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os09" data-name="Paper Clips Box" data-price="25.00" data-image="https://via.placeholder.com/150/808080/FFFFFF?text=Clips"><div class="product-photo"><img src="picturebox/paperclips box.png" alt="Paper Clips"></div><div class="product-info"><p class="product-name">Paper Clips Box</p><p class="product-price">₱ 25.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os10" data-name="Laminating Film (100s)" data-price="450.00" data-image="https://via.placeholder.com/150/3498DB/FFFFFF?text=Laminating"><div class="product-photo"><img src="picturebox/laminating film.png" alt="Laminating Film"></div><div class="product-info"><p class="product-name">Laminating Film (100s)</p><p class="product-price">₱ 450.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os11" data-name="Tape Dispenser Desk" data-price="150.00" data-image="https://via.placeholder.com/150/9B59B6/FFFFFF?text=Tape"><div class="product-photo"><img src="picturebox/tape dispenser desk.png" alt="Tape Dispenser"></div><div class="product-info"><p class="product-name">Tape Dispenser Desk</p><p class="product-price">₱ 150.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os12" data-name="Heavy-Duty Scissors" data-price="180.00" data-image="https://via.placeholder.com/150/34495E/FFFFFF?text=Scissors"><div class="product-photo"><img src="picturebox/hd scissor.png" alt="Large Scissors"></div><div class="product-info"><p class="product-name">Heavy-Duty Scissors</p><p class="product-price">₱ 180.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os13" data-name="Plastic Ruler 12&quot;" data-price="40.00" data-image="https://via.placeholder.com/150/2ECC71/FFFFFF?text=Ruler"><div class="product-photo"><img src="picturebox/plastic ruler.png" alt="Ruler 12 inch"></div><div class="product-info"><p class="product-name">Plastic Ruler 12"</p><p class="product-price">₱ 40.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os14" data-name="Mesh Pencil Holder" data-price="99.00" data-image="https://via.placeholder.com/150/BDC3C7/FFFFFF?text=Holder"><div class="product-photo"><img src="picturebox/mesh pensil holder.png" alt="Pencil Holder"></div><div class="product-info"><p class="product-name">Mesh Pencil Holder</p><p class="product-price">₱ 99.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os15" data-name="Storage Box Files (3pcs)" data-price="350.00" data-image="https://via.placeholder.com/150/F39C12/FFFFFF?text=Files"><div class="product-photo"><img src="picturebox/storage box.png" alt="Box Files"></div><div class="product-info"><p class="product-name">Storage Box Files (3pcs)</p><p class="product-price">₱ 350.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os16" data-name="Lever Arch File Legal" data-price="130.00" data-image="https://via.placeholder.com/150/F39C12/FFFFFF?text=File"><div class="product-photo"><img src="picturebox/lever arch.png" alt="Lever Arch File"></div><div class="product-info"><p class="product-name">Lever Arch File Legal</p><p class="product-price">₱ 130.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os17" data-name="Plastic Envelopes A4" data-price="55.00" data-image="https://via.placeholder.com/150/3498DB/FFFFFF?text=Envelope"><div class="product-photo"><img src="picturebox/plastic envelope A4.png" alt="Plastic Envelopes"></div><div class="product-info"><p class="product-name">Plastic Envelopes A4</p><p class="product-price">₱ 55.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os18" data-name="Assorted Push Pins" data-price="30.00" data-image="https://via.placeholder.com/150/E74C3C/FFFFFF?text=Pins"><div class="product-photo"><img src="picturebox/assorted push pin.png" alt="Push Pins"></div><div class="product-info"><p class="product-name">Assorted Push Pins</p><p class="product-price">₱ 30.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os19" data-name="Whiteboard Markers (4pcs)" data-price="175.00" data-image="https://via.placeholder.com/150/F1C40F/FFFFFF?text=Marker"><div class="product-photo"><img src="picturebox/white board markers.png" alt="Whiteboard Marker"></div><div class="product-info"><p class="product-name">Whiteboard Markers (4pcs)</p><p class="product-price">₱ 175.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="os20" data-name="Correction Tape Refillable" data-price="50.00" data-image="https://via.placeholder.com/150/BDC3C7/FFFFFF?text=Tape"><div class="product-photo"><img src="picturebox/correction tape.png" alt="Correction Tape"></div><div class="product-info"><p class="product-name">Correction Tape Refillable</p><p class="product-price">₱ 50.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                </div>
+
+                <h2 class="section-title" id="stationaries">PURCHASE STATIONARIES</h2>
+                <div style="text-align: left; padding: 12px 0;">
+                    <label for="sort-select-stationaries" style="margin-right:8px; font-weight:600;">Sort by:</label>
+                    <select id="sort-select-stationaries" class="sort-select" style="padding:8px 10px; border-radius:4px; border:1px solid #ccc;">
+                        <option value="default">Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                    </select>
+                </div>
+                <div class="product-grid">
+                    
+                    <div class="product-card" data-id="st01" data-name="Spiral Notebook A5" data-price="85.00" data-image="https://via.placeholder.com/150/3498DB/FFFFFF?text=Notebook"><div class="product-photo"><img src="picturebox/spiral notebook.jpg" alt="Spiral Notebook A5"></div><div class="product-info"><p class="product-name">Spiral Notebook A5</p><p class="product-price">₱ 85.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st02" data-name="Composition Notebook" data-price="50.00" data-image="https://via.placeholder.com/150/3498DB/FFFFFF?text=Notebook"><div class="product-photo"><img src="picturebox/compisition notebook.jpg" alt="Composition Notebook"></div><div class="product-info"><p class="product-name">Composition Notebook</p><p class="product-price">₱ 50.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st03" data-name="Ballpoint Pen Set (12pcs)" data-price="75.00" data-image="https://via.placeholder.com/150/E74C3C/FFFFFF?text=Pen"><div class="product-photo"><img src="picturebox/ball point pen set.jpg" alt="Ballpoint Pen Set"></div><div class="product-info"><p class="product-name">Ballpoint Pen Set (12pcs)</p><p class="product-price">₱ 75.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st04" data-name="Gel Pen Set (10 colors)" data-price="180.00" data-image="https://via.placeholder.com/150/E74C3C/FFFFFF?text=Gel+Pen"><div class="product-photo"><img src="picturebox/gel pen set.png" alt="Gel Pen Set"></div><div class="product-info"><p class="product-name">Gel Pen Set (10 colors)</p><p class="product-price">₱ 180.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st05" data-name="Highlighter Set (6 colors)" data-price="99.00" data-image="https://via.placeholder.com/150/F1C40F/FFFFFF?text=Highlighter"><div class="product-photo"><img src="picturebox/highlighter set.png" alt="Highlighter Set"></div><div class="product-info"><p class="product-name">Highlighter Set (6 colors)</p><p class="product-price">₱ 99.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st06" data-name="Jumbo Sticky Notes 4x6" data-price="120.00" data-image="https://via.placeholder.com/150/FF9900/FFFFFF?text=Sticky+Notes"><div class="product-photo"><img src="picturebox/sticky notes.jpg" alt="Jumbo Sticky Notes"></div><div class="product-info"><p class="product-name">Jumbo Sticky Notes 4x6</p><p class="product-price">₱ 120.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st07" data-name="Colored Sticky Notes" data-price="45.00" data-image="https://via.placeholder.com/150/FF9900/FFFFFF?text=Sticky+Notes"><div class="product-photo"><img src="picturebox/sticky notes.jpg" alt="Colored Sticky Notes"></div><div class="product-info"><p class="product-name">Colored Sticky Notes</p><p class="product-price">₱ 45.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st08" data-name="Business Envelopes (50s)" data-price="110.00" data-image="https://via.placeholder.com/150/808080/FFFFFF?text=Envelope"><div class="product-photo"><img src="picturebox/envelopes assorted.png" alt="Business Envelopes"></div><div class="product-info"><p class="product-name">Business Envelopes (50s)</p><p class="product-price">₱ 110.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st09" data-name="Bubble Mailers Small" data-price="25.00" data-image="https://via.placeholder.com/150/27AE60/FFFFFF?text=Mailer"><div class="product-photo"><img src="picturebox/bubble mailer set.jpg" alt="Bubble Mailers Small"></div><div class="product-info"><p class="product-name">Bubble Mailers Small</p><p class="product-price">₱ 25.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st10" data-name="Drawing Pencils Set" data-price="200.00" data-image="https://via.placeholder.com/150/34495E/FFFFFF?text=Pencils"><div class="product-photo"><img src="picturebox/drawing pensils set.jpg" alt="Drawing Pencils"></div><div class="product-info"><p class="product-name">Drawing Pencils Set</p><p class="product-price">₱ 200.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st11" data-name="Crayons (16 colors)" data-price="40.00" data-image="https://via.placeholder.com/150/F39C12/FFFFFF?text=Crayons"><div class="product-photo"><img src="picturebox/crayon 16 colors.jpg" alt="Crayons"></div><div class="product-info"><p class="product-name">Crayons (16 colors)</p><p class="product-price">₱ 40.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st12" data-name="Colored Markers (24pcs)" data-price="250.00" data-image="https://via.placeholder.com/150/2ECC71/FFFFFF?text=Markers"><div class="product-photo"><img src="picturebox/colored markers 24 pcs.jpg" alt="Colored Markers"></div><div class="product-info"><p class="product-name">Colored Markers (24pcs)</p><p class="product-price">₱ 250.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st13" data-name="All-Purpose Glue Stick" data-price="35.00" data-image="https://via.placeholder.com/150/3498DB/FFFFFF?text=Glue"><div class="product-photo"><img src="picturebox/all purpose glue.jpg" alt="Glue Stick"></div><div class="product-info"><p class="product-name">All-Purpose Glue Stick</p><p class="product-price">₱ 35.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st14" data-name="Liquid Glue Bottle" data-price="60.00" data-image="https://via.placeholder.com/150/3498DB/FFFFFF?text=Glue"><div class="product-photo"><img src="picturebox/glue.jpg" alt="Liquid Glue"></div><div class="product-info"><p class="product-name">Liquid Glue Bottle</p><p class="product-price">₱ 60.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st15" data-name="Washi Tape Set (5 rolls)" data-price="150.00" data-image="https://via.placeholder.com/150/9B59B6/FFFFFF?text=Washi+Tape"><div class="product-photo"><img src="picturebox/washi tape.jpg" alt="Washi Tapes"></div><div class="product-info"><p class="product-name">Washi Tape Set (5 rolls)</p><p class="product-price">₱ 150.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st16" data-name="Academic Planner 2026" data-price="400.00" data-image="https://via.placeholder.com/150/E74C3C/FFFFFF?text=Planner"><div class="product-photo"><img src="picturebox/planner.png" alt="Planner"></div><div class="product-info"><p class="product-name">Academic Planner 2026</p><p class="product-price">₱ 400.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st17" data-name="Large Rubber Eraser" data-price="20.00" data-image="https://via.placeholder.com/150/BDC3C7/FFFFFF?text=Eraser"><div class="product-photo"><img src="picturebox/large rubber eraser.jpg" alt="Eraser"></div><div class="product-info"><p class="product-name">Large Rubber Eraser</p><p class="product-price">₱ 20.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st18" data-name="Pencil Sharpener Metal" data-price="45.00" data-image="https://via.placeholder.com/150/34495E/FFFFFF?text=Sharpener"><div class="product-photo"><img src="picturebox/pencil sparpner.png" alt="Sharpener"></div><div class="product-info"><p class="product-name">Pencil Sharpener Metal</p><p class="product-price">₱ 45.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st19" data-name="Pocket Memo Pad" data-price="30.00" data-image="https://via.placeholder.com/150/FF9900/FFFFFF?text=Memo+Pad"><div class="product-photo"><img src="picturebox/pocket memo pad.jpg"alt ="Memo Pad"></div><div class="product-info"><p class="product-name">Pocket Memo Pad</p><p class="product-price">₱ 30.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                    <div class="product-card" data-id="st20" data-name="Scientific Calculator" data-price="650.00" data-image="https://via.placeholder.com/150/34495E/FFFFFF?text=Calculator"><div class="product-photo"><img src="picturebox/sci calcu.png" alt="Scientific Calculator"></div><div class="product-info"><p class="product-name">Scientific Calculator</p><p class="product-price">₱ 650.00</p><button class="add-to-cart-btn">Add to cart</button></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            
+            <div class="footer-column">
+                <h4 class="footer-heading">Shop OffiStation</h4>
+                <ul>
+                    <li><a href="catalog.html#office-supplies">Office Supplies</a></li>
+                    <li><a href="catalog.html#stationaries">Stationaries</a></li>
+                    <li><a href="promos.html">Promotions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">Customer Support</h4>
+                <ul>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">More Info</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h4 class="footer-heading">Get In Touch</h4>
+                <p>Email: <a href="mailto:info@offistation.com">info@offistation.com</a></p>
+                <p>Hotline: (02) 8XXX-XXXX</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright">
+                &copy; OffiStation. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+        <script>
+        // Per-section sort controls: attach to each .sort-select and sort the grid inside the same section
+        document.addEventListener('DOMContentLoaded', () => {
+            const sortSelects = document.querySelectorAll('.sort-select');
+            const grids = document.querySelectorAll('.product-grid');
+
+            // store original order
+            grids.forEach(grid => {
+                Array.from(grid.children).forEach((card, idx) => card.dataset.originalIndex = idx);
+            });
+
+            function sortGrid(grid, compareFn) {
+                const cards = Array.from(grid.children);
+                cards.sort(compareFn);
+                const frag = document.createDocumentFragment();
+                cards.forEach(c => frag.appendChild(c));
+                grid.appendChild(frag);
+            }
+
+            sortSelects.forEach(select => {
+                const section = select.closest('section') || document;
+                const grid = section.querySelector('.product-grid');
+                if (!grid) return;
+                select.addEventListener('change', e => {
+                    const val = e.target.value;
+                    if (val === 'default') {
+                        sortGrid(grid, (a,b) => (parseInt(a.dataset.originalIndex) - parseInt(b.dataset.originalIndex)));
+                    } else if (val === 'price-asc') {
+                        sortGrid(grid, (a,b) => (parseFloat(a.dataset.price||0) - parseFloat(b.dataset.price||0)));
+                    } else if (val === 'price-desc') {
+                        sortGrid(grid, (a,b) => (parseFloat(b.dataset.price||0) - parseFloat(a.dataset.price||0)));
+                    } else if (val === 'name-asc') {
+                        sortGrid(grid, (a,b) => ((a.dataset.name||'').localeCompare(b.dataset.name||'')));
+                    }
+                });
+            });
+        });
+        </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

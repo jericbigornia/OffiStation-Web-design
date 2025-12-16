@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffiStation - FAQs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- FAQ Specific Styles --- */
+        .faq-section {
+            padding: 60px 20px;
+            background-color: var(--light-color);
+            min-height: 60vh;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .faq-header h1 {
+            color: var(--primary-color);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .faq-header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        /* The Question Button */
+        .accordion-btn {
+            background-color: white;
+            color: #333;
+            cursor: pointer;
+            padding: 20px 25px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-btn:hover {
+            background-color: #f9f9f9;
+            color: var(--primary-color);
+        }
+
+        .accordion-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* FIX: Adjusted Panel Styling to prevent clipping */
+        .panel {
+            padding: 0 25px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            box-sizing: border-box; /* Ensure padding doesn't break calculations */
+        }
+
+        .panel p {
+            line-height: 1.6;
+            color: #555;
+            margin: 0;
+            padding-bottom: 5px; /* Tiny buffer for text decenders (g, y, j) */
+        }
+
+        .accordion-btn i {
+            transition: transform 0.3s ease;
+        }
+        .accordion-btn.active i {
+            transform: rotate(180deg);
+        }
+
+        /* FIX: Explicit padding when open */
+        .panel.show {
+            padding: 20px 25px; 
+            /* We remove opacity animation here to make the opening feel snappier and avoid text glitches */
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://uploads.onecompiler.io/43x8vcmdw/43x8v8ryb/LOGO.png" alt="Store Logo" class="logo-img">
+            </a>
+            <span class="store-tagline">Your Trusted Online Source for Office Supplies and Stationery</span>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li>
+                    <a href="cart.html" class="shopping-cart-link">
+                        <i class="fas fa-shopping-cart"></i> 
+                        <span id="cart-count" data-count="0">0</span> 
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="faq-section">
+            <div class="faq-header">
+                <h1>Frequently Asked Questions</h1>
+                <p>Got questions? We've got answers.</p>
+            </div>
+
+            <div class="faq-container">
+                
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        What is OffiStation? 
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="panel">
+                        <p>OffiStation is a mini e-commerce website designed to offer office supplies and stationery products. It serves as a prototype created by BS Office Administration students to practice web design and basic online shopping functionality.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        Do I need an account to add items to my cart?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="panel">
+                        <p>Yes. Users must sign in or create an account before they can add items to the shopping cart. This helps ensure a more secure and personalized shopping experience.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        Can I check out items without logging in?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="panel">
+                        <p>No. Checkout is only available for users who are logged in. This helps protect your order details and ensures proper tracking of purchases.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        What technologies were used to build OffiStation?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="panel">
+                        <p>The website was developed using HTML, CSS, and JavaScript, with the design layout drafted first in Canva. Future updates may include PHP and database integration.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        Are the products real or for demonstration only?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="panel">
+                        <p>All products displayed are for demonstration purposes only. OffiStation is a prototype and does not process real payments or deliveries.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        Is OffiStation mobile-friendly?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="panel">
+                        <p>Yes. The layout is designed to be simple and responsive, allowing users to browse products on both desktop and mobile devices.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        Who created OffiStation?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="panel">
+                        <p>OffiStation was created by a group of BS Office Administration students as part of a web development learning project.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        Will OffiStation receive future improvements?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="panel">
+                        <p>Yes. The project may later include new features such as user authentication, a product database, and a working checkout system using PHP and MySQL.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="catalog.html#office-supplies">Office Supplies</a></li>
+                    <li><a href="catalog.html#stationaries">Stationaries</a></li>
+                    <li><a href="promos.html">Promotions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h4>Contact</h4>
+                <p>Email: <a href="mailto:info@offistation.com">info@offistation.com</a></p>
+                <p>Hotline: (02) 8XXX-XXXX</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; OffiStation. All rights reserved. &nbsp;|&nbsp; A Pateros Technological College BSOA 4OL project</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const acc = document.getElementsByClassName("accordion-btn");
+            
+            for (let i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    // Close other open panels
+                    const currentActive = document.querySelector(".accordion-btn.active");
+                    if (currentActive && currentActive !== this) {
+                        currentActive.classList.remove("active");
+                        currentActive.nextElementSibling.style.maxHeight = null;
+                        currentActive.nextElementSibling.classList.remove("show");
+                    }
+
+                    // Toggle current
+                    this.classList.toggle("active");
+                    const panel = this.nextElementSibling;
+                    
+                    if (panel.style.maxHeight) {
+                        // Close
+                        panel.style.maxHeight = null;
+                        panel.classList.remove("show");
+                    } else {
+                        // Open
+                        panel.classList.add("show");
+                        // FIX: Add a 20px buffer to the height calculation to prevent text clipping
+                        panel.style.maxHeight = (panel.scrollHeight + 20) + "px";
+                    }
+                });
+            }
+
+            // Standard Nav Toggle
+            const header = document.querySelector('.main-header');
+            const nav = document.querySelector('.main-nav');
+            if (header && nav && !header.querySelector('.nav-toggle')) {
+                const btn = document.createElement('button');
+                btn.className = 'nav-toggle';
+                btn.setAttribute('aria-label', 'Toggle navigation');
+                btn.innerHTML = '<span class="bar"></span>';
+                const logoArea = header.querySelector('.logo-area') || header.firstElementChild;
+                logoArea && logoArea.insertAdjacentElement('afterend', btn);
+                btn.addEventListener('click', () => header.classList.toggle('nav-open'));
+                nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+            }
+        });
+    </script>
+</body>
+</html>

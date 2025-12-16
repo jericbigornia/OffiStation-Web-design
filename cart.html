@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffiStation - Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://uploads.onecompiler.io/43x8vcmdw/43x8v8ryb/LOGO.png" alt="Store Logo" class="logo-img">
+            </a>
+            <span class="store-tagline">Your Trusted Online Source for Office Supplies and Stationery</span>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <a href="cart.html" class="shopping-cart-link">
+                        <i class="fas fa-shopping-cart"></i> 
+                        <span id="cart-count" data-count="0">0</span> 
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart-section">
+                <div class="container">
+                <h1 class="cart-title">SHOPPING CART</h1>
+                <!-- header CTA removed; empty-cart message provides the primary CTA when cart is empty -->
+
+                <div id="empty-cart-message" style="display: none; text-align: center; padding: 30px 0 6px; max-width:900px;margin:0 auto;">
+                    <h2 class="cart-empty-subheading" style="font-size:1.25em;color:#666;margin-bottom:8px;font-weight:600;">Your cart is currently empty.</h2>
+                    <p style="font-size:1.05em;color:#888;margin-bottom:16px;">Looks like you haven't added anything yet.</p>
+                    <a href="catalog.html" class="shop-now-btn">start shopping</a>
+                </div>
+
+                <div class="cart-content-wrapper" id="cart-content-wrapper">
+                    
+                    <div class="cart-items-container">
+                        
+                        <div class="cart-header-row" id="cart-header-row" style="display: none;">
+                            <span class="col-product">Product</span>
+                            <span class="col-price">Price</span>
+                            <span class="col-quantity">Quantity</span>
+                            <span class="col-subtotal">Subtotal</span>
+                        </div>
+                        
+                        <div id="cart-items-list">
+                            </div>
+
+                        <!-- empty cart message moved above so it appears under the cart title when empty -->
+                        
+                        <!-- Continue Shopping link removed to keep single CTA buttons -->
+                    </div>
+
+                    <div class="cart-summary" id="cart-summary-box" style="display: none;">
+                        <h2 class="summary-heading">Cart Summary</h2>
+                        
+                        <div class="summary-line">
+                            <span>Subtotal (<span id="summary-item-count">0</span> items)</span>
+                            <span class="summary-value" id="cart-subtotal-value">₱ 0.00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Shipping</span>
+                            <span class="summary-value" id="cart-shipping-value">₱ 150.00</span>
+                        </div>
+                        <div class="summary-line" id="voucher-discount-row" style="display:none;">
+                            <span>Discount</span>
+                            <span class="summary-value" id="cart-discount-value">₱ 0.00</span>
+                        </div>
+                        <div class="summary-line total-line">
+                            <span>Total</span>
+                            <span class="summary-value total-value" id="cart-total-value">₱ 0.00</span>
+                        </div>
+                        
+                        <a href="checkout.html" class="checkout-btn" id="checkout-link">Proceed to Checkout</a>
+                    </div>
+
+                    <!-- duplicate empty-cart-message removed (kept the one inside the left column) -->
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            
+            <div class="footer-column">
+                <h4 class="footer-heading">Shop OffiStation</h4>
+                <ul>
+                    <li><a href="catalog.html#office-supplies">Office Supplies</a></li>
+                    <li><a href="catalog.html#stationaries">Stationaries</a></li>
+                    <li><a href="promos.html">Promotions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">Customer Support</h4>
+                <ul>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4 class="footer-heading">More Info</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h4 class="footer-heading">Get In Touch</h4>
+                <p>Email: <a href="mailto:info@offistation.com">info@offistation.com</a></p>
+                <p>Hotline: (02) 8XXX-XXXX</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright">
+                &copy; OffiStation. All rights reserved.
+            </p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

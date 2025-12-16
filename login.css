@@ -1,0 +1,373 @@
+/* Animated welcome for left banner */
+
+/* Restore default left banner font styles */
+.left h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.brand {
+    color: #ffe066;
+    font-family: inherit;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.13);
+}
+.left p {
+    font-size: 16px;
+    opacity: 0.9;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+/* Moving office supplies animation */
+.office-anim {
+    position: relative;
+    width: 120px;
+    height: 90px;
+    margin: 0 auto;
+}
+.floating {
+    position: absolute;
+    opacity: 0.92;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+    animation-timing-function: ease-in-out;
+}
+.paperclip {
+    left: 10px;
+    top: 40px;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border-radius: 50%;
+    animation: floatPaperclip 3.2s infinite alternate;
+}
+.pencil {
+    left: 60px;
+    top: 10px;
+    width: 36px;
+    height: 10px;
+    background: none;
+    border-radius: 5px;
+    animation: floatPencil 2.7s infinite alternate;
+}
+.notebook {
+    left: 80px;
+    top: 50px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border-radius: 6px;
+    animation: floatNotebook 3.7s infinite alternate;
+}
+@keyframes floatPaperclip {
+    0% { transform: translateY(0) rotate(-8deg) scale(1); }
+    100% { transform: translateY(-18px) rotate(12deg) scale(1.08); }
+}
+@keyframes floatPencil {
+    0% { transform: translateY(0) rotate(2deg) scale(1); }
+    100% { transform: translateY(-14px) rotate(-8deg) scale(1.04); }
+}
+@keyframes floatNotebook {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    100% { transform: translateY(-22px) rotate(6deg) scale(1.07); }
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* allow site-wide purple background to show through */
+    background-color: transparent;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/*
+    login.css (plain English):
+    Styles specifically for the login page card. The left column is a welcoming banner
+    with a purple background and small moving icons. The right column contains the
+    sign-in form. This file keeps those styles separate from the main site styles.
+*/
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    height: auto;
+    min-height: 500px;
+    display: flex;
+    border-radius: 16px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin: 40px auto;
+    align-self: center;
+}
+
+    .left {
+        width: 50%;
+        background: linear-gradient(135deg, #6b2cc2 0%, #8f48e3 100%);
+        color: white;
+        padding: 40px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        min-height: 450px;
+    }
+
+    .left h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .left p {
+        font-size: 15px;
+        opacity: 0.95;
+        line-height: 1.5;
+        margin-bottom: 30px;
+    }
+
+    /* Decorative tips removed */
+
+    /* Promo box in the left column */
+    .promo {
+        margin-top: 22px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+        padding: 18px 16px;
+        border-radius: 12px;
+        max-width: 320px;
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.06);
+        margin-left: auto; /* center promo block */
+        margin-right: auto;
+    }
+    .promo h3 {
+        margin: 0 0 8px 0;
+        font-size: 18px;
+        font-weight: 800;
+        color: #fff;
+    }
+    .promo p {
+        margin: 0 0 12px 0;
+        font-size: 14px;
+        color: rgba(255,255,255,0.95);
+    }
+    .promo-btn {
+        display: inline-block;
+        padding: 10px 14px;
+        background: #ffc107;
+        color: #000;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+    /* Responsive layout for tablets and mobile */
+    @media (max-width: 860px) {
+        .container {
+            flex-direction: column;
+            min-height: auto;
+            margin: 30px auto;
+        }
+        .left, .right {
+            width: 100%;
+            padding: 40px 20px;
+            min-height: auto;
+        }
+        .left {
+            order: 1;
+            justify-content: center;
+        }
+        .right {
+            order: 2;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            width: 95%;
+            margin: 20px auto;
+            border-radius: 12px;
+        }
+        .left, .right {
+            padding: 30px 16px;
+        }
+        .right h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        input {
+            font-size: 16px; /* Prevent zoom on iOS */
+        }
+        .btn {
+            padding: 12px 16px;
+            font-size: 14px;
+        }
+        .left h1 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        .left p {
+            font-size: 14px;
+        }
+        .options {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+    }
+
+.right {
+    width: 50%;
+    background: #fff;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 450px;
+}
+
+    .right h2 {
+        margin: 0 0 28px 0;
+        font-size: 28px;
+        font-weight: bold;
+        color: #1a1a1a;
+    }
+
+    .right p {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+    }
+
+    .right p a {
+        text-decoration: none;
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    .right p a:hover {
+        text-decoration: underline;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        margin: 12px 0;
+        font-size: 14px;
+        box-sizing: border-box;
+        transition: border-color 200ms, box-shadow 200ms;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(107, 44, 194, 0.1);
+    }
+
+    /* Password field with toggle button */
+    .password-field {
+        position: relative;
+        width: 100%;
+        margin: 12px 0;
+    }
+    .password-field input {
+        width: 100%;
+        padding-right: 44px;
+        box-sizing: border-box;
+    }
+    .toggle-pass {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        opacity: 0.7;
+        padding: 8px;
+        transition: opacity 200ms;
+    }
+
+    .toggle-pass:hover {
+        opacity: 1;
+    }
+
+.toggle-pass i {
+    color: var(--primary-color);
+}
+
+    .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        margin: 16px 0 20px 0;
+        gap: 12px;
+    }
+
+    .options label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .options input[type="checkbox"] {
+        margin: 0;
+        width: auto;
+        cursor: pointer;
+    }
+
+    .options a {
+        text-decoration: none;
+        color: var(--primary-color);
+        font-weight: 500;
+    }
+
+    .options a:hover {
+        text-decoration: underline;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, #6b2cc2, #8f48e3);
+        border: none;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 16px 0;
+        transition: all 200ms ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(107, 44, 194, 0.3);
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+    .right a {
+        text-decoration: none;
+        color: #6b2cc2;
+        font-weight: bold;
+    }

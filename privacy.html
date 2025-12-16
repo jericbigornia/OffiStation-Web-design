@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffiStation - Privacy Policy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- Privacy Page Specific Styles --- */
+        .policy-header-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .policy-header-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .policy-header-section p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .policy-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Intro Box */
+        .policy-intro {
+            background-color: #eef2f7;
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Grid Layout for Policy Points */
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .policy-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Icons for each card */
+        .card-icon {
+            font-size: 2em;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .policy-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .policy-card p {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Highlight for Educational Purpose Card */
+        .policy-card.highlight {
+            background: linear-gradient(135deg, #fff, #f3e5f5);
+            border: 1px solid var(--accent-color);
+        }
+
+        /* Last Updated text */
+        .last-updated {
+            text-align: center;
+            font-size: 0.9em;
+            color: #222222; /* darker shade for improved legibility */
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Footer redesign (compact) */
+        .main-footer { background: linear-gradient(180deg,#0f1724,#071126); color: #e6eef8; padding: 28px 0; font-size: 0.95rem; }
+        .main-footer .footer-container { max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:flex-start; padding: 0 16px; }
+        .main-footer .footer-column { flex: 1 1 180px; min-width:160px; }
+        .main-footer .footer-column h4 { color:#fff; margin-bottom:8px; font-size:1rem; }
+        .main-footer .footer-column ul { padding:0; margin:0; list-style:none; }
+        .main-footer .footer-column ul li { margin-bottom:8px; }
+        .main-footer .footer-column ul li a { color:#cbd5e1; text-decoration:none; }
+        .main-footer .contact-info p { margin:6px 0; color:#cbd5e1; }
+        .main-footer .footer-bottom { text-align:center; padding-top:14px; color:#9fb0c9; font-size:0.9rem; }
+        @media (max-width:560px){ .main-footer .footer-container { flex-direction:column; align-items:center; } .main-footer .footer-column { text-align:center; } }
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://uploads.onecompiler.io/43x8vcmdw/43x8v8ryb/LOGO.png" alt="Store Logo" class="logo-img">
+            </a>
+            <span class="store-tagline">Your Trusted Online Source for Office Supplies and Stationery</span>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li>
+                    <a href="cart.html" class="shopping-cart-link">
+                        <i class="fas fa-shopping-cart"></i> 
+                        <span id="cart-count" data-count="0">0</span> 
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="policy-header-section">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is important to us. This Privacy Policy explains how OffiStation handles and protects user information.</p>
+        </section>
+
+        <div class="policy-container">
+            
+            <div class="policy-intro">
+                <strong>Note:</strong> OffiStation is an academic project developed by BS Office Administration students and does not collect, store, or share real personal data.
+            </div>
+
+            <div class="policy-grid">
+
+                <div class="policy-card">
+                    <i class="fas fa-user-secret card-icon"></i>
+                    <h3>1. Information We Collect</h3>
+                    <p>OffiStation does not collect or store any sensitive personal information. Any login or account features included in the website are for demonstration only and do not store actual user data in a database.</p>
+                </div>
+
+                <div class="policy-card">
+                    <i class="fas fa-hand-holding-heart card-icon"></i>
+                    <h3>2. Use of Information</h3>
+                    <p>Any information entered by users (such as names or emails in forms) is used only for interface demonstration and is not saved, processed, or shared in any way.</p>
+                </div>
+
+                <div class="policy-card">
+                    <i class="fas fa-cookie-bite card-icon"></i>
+                    <h3>3. Cookies and Tracking</h3>
+                    <p>OffiStation does not use cookies, tracking tools, or analytics to collect user activity. All interactions on the site are handled locally within the browser for educational purposes only.</p>
+                </div>
+
+                <div class="policy-card">
+                    <i class="fas fa-share-alt card-icon"></i>
+                    <h3>4. Third-Party Sharing</h3>
+                    <p>We do not share, sell, or transfer any information to third parties. Since no real data is collected, there is nothing shared outside of this academic project.</p>
+                </div>
+
+                <div class="policy-card">
+                    <i class="fas fa-shield-alt card-icon"></i>
+                    <h3>5. Data Security</h3>
+                    <p>Although the website simulates features like login and add-to-cart, OffiStation does not store information on any server. Therefore, no actual security risks are present, as no real data is being handled.</p>
+                </div>
+
+                <div class="policy-card highlight">
+                    <i class="fas fa-graduation-cap card-icon"></i>
+                    <h3>6. Educational Purpose Only</h3>
+                    <p>OffiStation is a prototype designed for learning web development concepts using HTML, CSS, and JavaScript. It should not be used for real shopping, user registration, or business transactions.</p>
+                </div>
+
+                <div class="policy-card">
+                    <i class="fas fa-sync-alt card-icon"></i>
+                    <h3>7. Changes to This Policy</h3>
+                    <p>We may update or revise this Privacy Policy as we improve the project for academic purposes. Any changes will be reflected on this page.</p>
+                </div>
+
+                <div class="policy-card">
+                    <i class="fas fa-envelope card-icon"></i>
+                    <h3>8. Contact Us</h3>
+                    <p>If you have questions about this Privacy Policy or about the OffiStation project, you may contact the project creators through the information provided on our Contact page.</p>
+                </div>
+
+            </div>
+
+            <div class="last-updated">
+                <p>Last Updated: December 2025 | BSOA 4OL</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="catalog.html#office-supplies">Office Supplies</a></li>
+                    <li><a href="catalog.html#stationaries">Stationeries</a></li>
+                    <li><a href="promos.html">Promotions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h4>Contact</h4>
+                <p>Email: <a href="mailto:info@offistation.com">info@offistation.com</a></p>
+                <p>Hotline: (02) 8XXX-XXXX</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; OffiStation. All rights reserved. &nbsp;|&nbsp; A Pateros Technological College BSOA 4OL project</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        // Nav toggle helper
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.main-header');
+            const nav = document.querySelector('.main-nav');
+            if (!header || !nav) return;
+            if (!header.querySelector('.nav-toggle')) {
+                const btn = document.createElement('button');
+                btn.className = 'nav-toggle';
+                btn.setAttribute('aria-label', 'Toggle navigation');
+                btn.innerHTML = '<span class="bar"></span>';
+                const logoArea = header.querySelector('.logo-area') || header.firstElementChild;
+                logoArea && logoArea.insertAdjacentElement('afterend', btn);
+                btn.addEventListener('click', () => header.classList.toggle('nav-open'));
+                nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+            }
+        });
+    </script>
+</body>
+</html>

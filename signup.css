@@ -1,0 +1,415 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* allow site-wide purple background to show through */
+    background-color: transparent;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    height: auto;
+    min-height: 550px;
+    display: flex;
+    border-radius: 16px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin: 40px auto;
+    align-self: center;
+}
+
+.left {
+    width: 50%;
+    background: linear-gradient(135deg, #6b2cc2 0%, #8f48e3 100%);
+    color: white;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    min-height: 500px;
+}
+
+.left h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.left p {
+    font-size: 15px;
+    opacity: 0.95;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.right {
+    width: 50%;
+    background: #fff;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 500px;
+    overflow-y: auto;
+}
+
+.right h2 {
+    margin-bottom: 28px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin: 12px 0;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 200ms, box-shadow 200ms;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(107, 44, 194, 0.1);
+}
+
+.btn {
+    width: 100%;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #6b2cc2, #8f48e3);
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 16px 0;
+    transition: all 200ms ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(107, 44, 194, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.options {
+    font-size: 13px;
+    margin: 16px 0 20px 0;
+}
+
+.right a {
+    text-decoration: none;
+    color: #6b2cc2;
+    font-weight: bold;
+}
+
+/* Divider between traditional and Google sign-up */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 25px 0 20px 0;
+    gap: 10px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.divider span {
+    font-size: 14px;
+    color: #999;
+    font-weight: 500;
+}
+
+/* Google sign-up button */
+.btn.google-btn {
+    background: white;
+    color: #333;
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn.google-btn:hover {
+    background: #f9f9f9;
+    border-color: #999;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn.google-btn i {
+    font-size: 18px;
+    color: #4285F4;
+}
+
+/* Google Sign-In button container */
+.google-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 10px 0;
+}
+
+.google-button-container > div {
+    transform: scale(1);
+}
+
+/* Google button styling (overrides default) */
+#g_id_signin {
+    margin: 0 auto !important;
+}
+
+#g_id_signin > div {
+    margin: 0 auto !important;
+}
+
+
+
+/* Success prompt modal styling */
+.success-prompt-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.success-prompt-banner {
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    padding: 50px 40px;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-icon {
+    font-size: 60px;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+.success-prompt-banner h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.success-prompt-banner p {
+    color: #666;
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.success-prompt-banner p strong {
+    color: #6b2cc2;
+    font-weight: 600;
+}
+
+.btn.success-btn {
+    margin-top: 25px;
+    background: linear-gradient(135deg, #6b2cc2, #8f48e3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 30px;
+    width: auto;
+    margin-bottom: 0;
+}
+
+.btn.success-btn:hover {
+    background: linear-gradient(135deg, #5a23a8, #7d3fcf);
+    box-shadow: 0 6px 16px rgba(107, 44, 194, 0.3);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+
+/* Responsive adjustments for signup page */
+@media (max-width: 900px) {
+    .container {
+        height: auto;
+        width: 95%;
+        flex-direction: column;
+    }
+
+    .left, .right {
+        width: 100%;
+        padding: 40px 30px;
+    }
+
+    .left h1 {
+        font-size: 32px;
+    }
+
+    .left p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 860px) {
+    .container {
+        height: auto;
+        width: 95%;
+        flex-direction: column;
+    }
+
+    .left, .right {
+        width: 100%;
+        padding: 40px 30px;
+        min-height: 300px;
+    }
+
+    .left h1 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .left p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .right h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    input {
+        padding: 11px 14px;
+        font-size: 13px;
+    }
+
+    .btn {
+        padding: 12px 18px;
+        font-size: 14px;
+        margin: 12px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        min-height: auto;
+        margin: 20px 0;
+        border-radius: 0;
+    }
+
+    .left, .right {
+        width: 100%;
+        padding: 30px 20px;
+        min-height: auto;
+    }
+
+    .left h1 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .left p {
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 15px;
+    }
+
+    .right h2 {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        margin: 10px 0;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 14px;
+        margin: 10px 0;
+    }
+
+    .options {
+        font-size: 12px;
+        margin: 12px 0 15px 0;
+    }
+
+    .success-prompt-banner {
+        padding: 30px 20px;
+        max-width: 95%;
+    }
+
+    .success-icon {
+        font-size: 48px;
+    }
+
+    .success-prompt-banner h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .success-prompt-banner p {
+        font-size: 13px;
+    }
+
+    .btn.success-btn {
+        font-size: 14px;
+        padding: 12px 24px;
+    }
+}

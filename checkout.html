@@ -1,0 +1,375 @@
+
+<!--
+
+    checkout.html (plain English):
+
+    The checkout page asks for shipping and payment details and shows an order summary.
+
+    - The form is validated locally to make sure required fields are filled.
+
+    - On submit, an order number is created and the cart is cleared (this is a demo; no real payment).
+
+
+
+    `script.js` prepares the summary and handles the form submission logic.
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OffiStation - Checkout</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+
+
+<body>
+
+
+
+    <header class="main-header">
+
+        <div class="logo-area">
+
+            <a href="index.html">
+
+                <img src="https://uploads.onecompiler.io/43x8vcmdw/43x8v8ryb/LOGO.png" alt="Store Logo" class="logo-img">
+
+            </a>
+
+            <span class="store-tagline">Your Trusted Online Source for Office Supplies and Stationery</span>
+
+        </div>
+
+
+
+        <nav class="main-nav">
+
+            <ul>
+
+                <li><a href="index.html">Home</a></li>
+
+                <li>
+
+                    <a href="cart.html" class="shopping-cart-link">
+
+                        <i class="fas fa-shopping-cart"></i>
+
+                        <span id="cart-count" data-count="0">0</span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+
+    <main>
+
+        <section class="checkout-section">
+
+            <div class="container">
+
+                <h1 class="page-title">Finalize Your Order</h1>
+
+               
+
+                <div id="order-success" style="display: none;">
+
+                    <h2>🎉 Order Placed Successfully!</h2>
+
+                    <p>Thank you for shopping with OffiStation. Your order number is **<span id="order-number"></span>**.</p>
+
+                    <p>A confirmation email has been sent to your inbox.</p>
+
+                    <p style="margin-top: 20px;"><a href="catalog.html" class="shop-now-btn" style="background-color: var(--accent-color);">Continue Browsing</a></p>
+
+                </div>
+
+               
+
+                <div class="checkout-wrapper" id="checkout-form-wrapper">
+
+                   
+
+                    <div class="shipping-form-container">
+
+                        <form id="checkout-form">
+
+                           
+
+                            <h3>Shipping Information</h3>
+
+                           
+
+                            <div class="form-group">
+
+                                <label for="fullName">Full Name</label>
+
+                                <input type="text" id="fullName" name="fullName" required>
+
+                                <div class="error-message" id="error-fullName">Please enter your full name.</div>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label for="email">Email Address</label>
+
+                                <input type="email" id="email" name="email" required>
+
+                                <div class="error-message" id="error-email">Please enter a valid email address.</div>
+
+                            </div>
+
+                           
+
+                            <div class="form-group">
+
+                                <label for="phone">Phone Number</label>
+
+                                <input type="tel" id="phone" name="phone" required>
+
+                                <div class="error-message" id="error-phone">Please enter a valid phone number.</div>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label for="address">Shipping Address</label>
+
+                                <input type="text" id="address" name="address" placeholder="House/Bldg No., Street, Barangay" required>
+
+                                <div class="error-message" id="error-address">Please enter your shipping address.</div>
+
+                            </div>
+
+                           
+
+                            <div class="form-group">
+
+                                <label for="city">City/Province</label>
+
+                                <input type="text" id="city" name="city" required>
+
+                                <div class="error-message" id="error-city">Please enter your city or province.</div>
+
+                            </div>
+
+                           
+
+                            <h3 style="margin-top: 30px;">Payment Method</h3>
+
+                           
+
+                            <div class="form-group payment-methods">
+
+                                <label>
+
+                                    <input type="radio" name="paymentMethod" value="cod" required checked>
+
+                                    Cash on Delivery (COD)
+
+                                </label>
+
+                                <label>
+
+                                    <input type="radio" name="paymentMethod" value="card">
+
+                                    Credit/Debit Card (Not functional)
+
+                                </label>
+
+                                <label>
+
+                                    <input type="radio" name="paymentMethod" value="eWallet">
+
+                                    E-Wallet (Not functional)
+
+                                </label>
+
+                                <div class="error-message" id="error-payment">Please select a payment method.</div>
+
+                            </div>
+
+                           
+
+                            <button type="submit" class="place-order-btn">Place Order</button>
+
+                           
+
+                        </form>
+
+                    </div>
+
+
+
+                    <div class="checkout-summary">
+
+                        <h2 class="summary-heading">Order Summary</h2>
+
+                       
+
+                        <div id="checkout-items-list" class="checkout-summary-breakdown">
+
+                            </div>
+
+
+
+                        <div class="summary-line" style="margin-top: 15px;">
+
+                            <span>Subtotal (<span id="summary-item-count">0</span> items)</span>
+
+                            <span class="summary-value" id="checkout-subtotal-value">₱ 0.00</span>
+
+                        </div>
+
+                        <div class="summary-line" id="checkout-voucher-row" style="display:none;">
+                            <span>Voucher</span>
+                            <span class="summary-value" id="checkout-voucher-code">-</span>
+                        </div>
+
+                        <div class="summary-line" id="checkout-discount-row" style="display:none;">
+                            <span>Discount</span>
+                            <span class="summary-value" id="checkout-discount-value">₱ 0.00</span>
+                        </div>
+
+                        <div class="summary-line">
+
+                            <span>Shipping Fee</span>
+
+                            <span class="summary-value" id="checkout-shipping-value">₱ 150.00</span>
+
+                        </div>
+
+                        <div class="summary-line total-line">
+
+                            <span>Order Total</span>
+
+                            <span class="summary-value total-value" id="checkout-total-value">₱ 0.00</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="catalog.html#office-supplies">Office Supplies</a></li>
+                    <li><a href="catalog.html#stationaries">Stationeries</a></li>
+                    <li><a href="promos.html">Promotions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h4>Contact</h4>
+                <p>Email: <a href="mailto:info@offistation.com">info@offistation.com</a></p>
+                <p>Hotline: (02) 8XXX-XXXX</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; OffiStation. All rights reserved. &nbsp;|&nbsp; A Pateros Technological College BSOA 4OL project</p>
+        </div>
+    </footer>
+
+   
+
+    <script src="script.js"></script>
+
+    <script>
+
+    // Nav toggle helper (also added to other pages)
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const header = document.querySelector('.main-header');
+
+        const nav = document.querySelector('.main-nav');
+
+        if (!header || !nav) return;
+
+        if (!header.querySelector('.nav-toggle')) {
+
+            const btn = document.createElement('button');
+
+            btn.className = 'nav-toggle';
+
+            btn.setAttribute('aria-label', 'Toggle navigation');
+
+            btn.innerHTML = '<span class="bar"></span>';
+
+            const logoArea = header.querySelector('.logo-area') || header.firstElementChild;
+
+            logoArea && logoArea.insertAdjacentElement('afterend', btn);
+
+            btn.addEventListener('click', () => header.classList.toggle('nav-open'));
+
+            nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+
+            let resizeTimer;
+
+            window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (window.innerWidth > 820 && header.classList.contains('nav-open')) header.classList.remove('nav-open'); }, 120); });
+
+            document.addEventListener('click', (e) => { if (!header.contains(e.target) && header.classList.contains('nav-open')) header.classList.remove('nav-open'); });
+
+        }
+
+    });
+
+    </script>
+
+</body>
+
+</html>
+
+
+
